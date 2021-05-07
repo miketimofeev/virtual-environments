@@ -12,6 +12,7 @@ if (-not $result)
     exit 1
 }
 
+Write-Host "$result version found"
 # The latest version will be installed as a default
 # ForEach ($version in $VersionsList)
 # {
