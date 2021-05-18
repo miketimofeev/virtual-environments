@@ -90,6 +90,7 @@
         ],
         "additional_tools": [
             "cmake;3.10.2.4988404",
+            "cmake;3.18.1",
             "patcher;v4",
             "platform-tools",
             "cmdline-tools;latest"
@@ -223,10 +224,6 @@
             "cmd": "yamllint"
         },
         {
-            "package": "aws-sam-cli",
-            "cmd": "sam"
-        },
-        {
             "package": "ansible-base",
             "cmd": "ansible"
         }
@@ -251,13 +248,15 @@
     "gcc": {
         "versions": [
             "g++-9",
-            "g++-10"
+            "g++-10",
+            "g++-11"
         ]
     },
     "gfortran": {
         "versions": [
             "gfortran-9",
-            "gfortran-10"
+            "gfortran-10",
+            "gfortran-11"
         ]
     },
     "php": {

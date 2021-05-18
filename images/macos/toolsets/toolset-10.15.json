@@ -164,6 +164,7 @@
         ],
         "additional-tools": [
             "cmake;3.10.2.4988404",
+            "cmake;3.18.1",
             "cmdline-tools;latest"
         ],
         "ndk": {
@@ -212,6 +213,14 @@
             "r",
             "vagrant",
             "virtualbox"
+        ]
+    },
+    "gcc": {
+        "versions": [
+            "8",
+            "9",
+            "10",
+            "11"
         ]
     },
     "toolcache": [
