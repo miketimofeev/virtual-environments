@@ -4,10 +4,19 @@
 ################################################################################
 
 # Get 3 latest versions of GHC
-$output = & choco search ghc --allversions --verbose --trace
+$output = & choco search ghc --allversions --verbose
 $result = $output | Where-Object { $_.StartsWith('ghc ') -and $_ -match 'Approved' } | ForEach-Object { [regex]::matches($_, '\d+(\.\d+){2,}').value } | Select-String "9.0.1"
 if (-not $result)
 {
+    Write-Host "Odata output is"
+    $ODataQuery = '$filter=(Title eq ''ghc'') and (IsPrerelease eq false)&$orderby=Version desc&$top=3'
+    $Url = "https://community.chocolatey.org/api/v2/Packages()?$ODataQuery"
+    Invoke-RestMethod -Uri $Url |
+    Select-Object -Property @(
+        @{ Name = 'Id'; Expression = { $_.title.innertext } }
+        @{ Name = 'Version'; Expression = { $_.properties.Version } }
+    )
+    Write-Host "Verbose output is"
     $output
     exit 1
 }
