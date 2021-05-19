@@ -258,3 +258,9 @@ Describe "Pipx" {
         "pipx --version" | Should -ReturnZeroExitCode
     }
 }
+
+Describe "swig" {
+    It "Swig" {
+        "swig --version" | Should -ReturnZeroExitCode
+    }
+}
