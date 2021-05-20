@@ -265,7 +265,6 @@ function Get-DacFxVersion {
 }
 
 function Get-SwigVersion {
-    (Swig | Out-String) -match "swig (?<version>\d+\.\d+\.?\d*)" | Out-Null
-    $version = $Matches.Version
-    return "swig $version"
+    $swigVersion = (choco list --local-only | Select-String -SimpleMatch "swig")| Out-String
+    return "$swigVersion"
 }
