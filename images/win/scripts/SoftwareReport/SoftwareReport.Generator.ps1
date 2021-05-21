@@ -103,7 +103,8 @@ $markdown += New-MDList -Style Unordered -Lines (@(
     (Get-VSWhereVersion),
     (Get-WinAppDriver),
     (Get-ZstdVersion),
-    (Get-YAMLLintVersion)
+    (Get-YAMLLintVersion),
+    (Get-SwigVersion)
     ) | Sort-Object
 )
 
