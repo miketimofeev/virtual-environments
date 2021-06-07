@@ -3,6 +3,8 @@
 ##  Desc:  Install Visual Studio
 ################################################################################
 
+Resolve-DnsName "download.visualstudio.microsoft.com"
+
 $toolset = Get-ToolsetContent
 $requiredComponents = $toolset.visualStudio.workloads | ForEach-Object { "--add $_" }
 $workLoads = @(
