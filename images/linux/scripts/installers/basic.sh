@@ -21,6 +21,8 @@ if isUbuntu16; then
     make
     make install
     ln -sf /etc/ssl/bin/openssl /usr/bin/openssl
+    cd ..
+    rm -rf openssl-1.1.1k*
 fi
 
 invoke_tests "Apt"
