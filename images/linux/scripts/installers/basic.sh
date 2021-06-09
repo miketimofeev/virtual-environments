@@ -14,15 +14,13 @@ for package in $common_packages $cmd_packages; do
 done
 
 if isUbuntu16; then
-    wget https://www.openssl.org/source/openssl-1.1.1k.tar.gz
-    tar xzvf openssl-1.1.1k.tar.gz
-    cd openssl-1.1.1k
+    openSslUrl="https://www.openssl.org/source/openssl-1.1.1k.tar.gz"
+    download_with_retries $openSslUrl "/tmp"
+    tar xzf /tmp/openssl-1.1.1k.tar.gz && cd /tmp/openssl-1.1.1k
     ./config --openssldir=/etc/ssl '-Wl,--enable-new-dtags,-rpath,$(LIBRPATH)'
-    make
-    make install
+    make -s
+    make install -s
     ln -sf /etc/ssl/bin/openssl /usr/bin/openssl
-    cd ..
-    rm -rf openssl-1.1.1k*
 fi
 
 invoke_tests "Apt"
