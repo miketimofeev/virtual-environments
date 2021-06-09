@@ -14,9 +14,12 @@ for package in $common_packages $cmd_packages; do
 done
 
 if isUbuntu16; then
-    openSslUrl="https://www.openssl.org/source/openssl-1.1.1k.tar.gz"
+    openSslArchiveName="openssl-1.1.1k.tar.gz"
+    openSslUrl="https://www.openssl.org/source/${openSslArchiveName}"
     download_with_retries $openSslUrl "/tmp"
-    tar xzf /tmp/openssl-1.1.1k.tar.gz && cd /tmp/openssl-1.1.1k
+    openSslPath="/tmp/$(basename -s .tar.gz $openSslArchiveName)"
+    mkdir -p "$openSslPath"
+    tar -C "$openSslPath" -xzf "/tmp/${openSslArchiveName}" --strip-components=1 && cd $openSslPath
     ./config --openssldir=/etc/ssl '-Wl,--enable-new-dtags,-rpath,$(LIBRPATH)'
     make -s
     make install -s
