@@ -22,7 +22,7 @@ if isUbuntu16; then
     tar -C "$openSslPath" -xzf "/tmp/${openSslArchiveName}" --strip-components=1 && cd $openSslPath
     ./config --openssldir=/etc/ssl '-Wl,--enable-new-dtags,-rpath,$(LIBRPATH)'
     make -s
-    make install -s
+    make install > /dev/null
     ln -sf /etc/ssl/bin/openssl /usr/bin/openssl
 fi
 
