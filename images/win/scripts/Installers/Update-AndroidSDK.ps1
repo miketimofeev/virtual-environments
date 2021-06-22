@@ -15,7 +15,7 @@ $androidToolset = (Get-ToolsetContent).android
 $sdkManager = "$sdkRoot\cmdline-tools\latest\bin\sdkmanager.bat"
 
 # Get licenses count, we need to add +1 to the output since the first sdkmanager request to review the licenses also requires Y answer
-#(Write-Output N | & $sdkManager --licenses | Select-String -Pattern "SDK package licenses not accepted") -match "(?<count>^\d+) of \d+" | Out-Null
+(Write-Output "N`n" | & $sdkManager --licenses | Select-String -Pattern "SDK package licenses not accepted") -match "(?<count>^\d+) of \d+"
 #$licensesCount = [int]$Matches.count + 1
 for($i=0; $i -lt 8; $i++)
 {
@@ -23,7 +23,7 @@ for($i=0; $i -lt 8; $i++)
 }
 
 # Accept all the licenses
-$response | & $sdkManager --licenses | Out-Null
+$response | & $sdkManager --licenses
 
 & $sdkManager --sdk_root=$sdkRoot "platform-tools"
 
