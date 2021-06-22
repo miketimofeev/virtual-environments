@@ -14,18 +14,7 @@ New-Item -Path "$sdkRoot" -ItemType SymbolicLink -Value "$sdkInstallRoot"
 $androidToolset = (Get-ToolsetContent).android
 $sdkManager = "$sdkRoot\cmdline-tools\latest\bin\sdkmanager.bat"
 
-# Get licenses count, we need to add +1 to the output since the first sdkmanager request to review the licenses also requires Y answer
-(Write-Output "N`n" | & $sdkManager --licenses | Select-String -Pattern "SDK package licenses not accepted") -match "(?<count>^\d+) of \d+"
-#$licensesCount = [int]$Matches.count + 1
-for($i=0; $i -lt 8; $i++)
-{
-    $response += "y`n"
-}
-
-# Accept all the licenses
-$response | & $sdkManager --licenses
-
-& $sdkManager --sdk_root=$sdkRoot "platform-tools"
+Write-Output "y" | & $sdkManager --sdk_root=$sdkRoot "platform-tools"
 
 # get packages info
 $androidPackages = Get-AndroidPackages -AndroidSDKManagerPath $sdkManager

@@ -421,7 +421,7 @@ function Install-AndroidSDKPackages {
     )
 
     foreach ($package in $AndroidPackages) {
-        & $AndroidSDKManagerPath --sdk_root=$AndroidSDKRootPath "$PrefixPackageName$package"
+        Write-Output "y" | & $AndroidSDKManagerPath --sdk_root=$AndroidSDKRootPath "$PrefixPackageName$package"
     }
 }
 
