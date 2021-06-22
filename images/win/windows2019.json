@@ -158,7 +158,6 @@
             ],
             "scripts": [
                 "{{ template_dir }}/scripts/Installers/Update-ImageData.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-Docker.ps1",
                 "{{ template_dir }}/scripts/Installers/Install-PowershellCore.ps1"
             ]
         },
@@ -168,48 +167,13 @@
         },
         {
             "type": "powershell",
-            "valid_exit_codes": [
-                0,
-                3010
-            ],
             "environment_vars": [
                 "TOOLSET_JSON_PATH={{user `toolset_json_path`}}"
             ],
             "scripts": [
-                "{{ template_dir }}/scripts/Installers/Update-DockerImages.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-KubernetesTools.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-VS.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-NET48.ps1"
-            ],
-            "elevated_user": "{{user `install_user`}}",
-            "elevated_password": "{{user `install_password`}}"
-        },
-        {
-            "type": "powershell",
-            "environment_vars": [
-                "TOOLSET_JSON_PATH={{user `toolset_json_path`}}"
-            ],
-            "scripts": [
-                "{{ template_dir }}/scripts/Installers/Install-Nuget.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-Wix.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-WDK.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-Vsix.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-AzureCli.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-AzureDevOpsCli.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-AzCopy.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-NodeLts.ps1",
                 "{{ template_dir }}/scripts/Installers/Install-7zip.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-Packer.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-Pulumi.ps1",
                 "{{ template_dir }}/scripts/Installers/Install-JavaTools.ps1"
             ]
-        },
-        {
-            "type": "powershell",
-            "scripts": [
-                "{{ template_dir }}/scripts/Installers/Install-ServiceFabricSDK.ps1"
-            ],
-            "execution_policy": "remotesigned"
         },
         {
             "type": "windows-restart",
@@ -229,10 +193,6 @@
                 "PSMODULES_ROOT_FOLDER={{user `psmodules_root_folder`}}"
             ],
             "scripts": [
-                "{{ template_dir }}/scripts/Installers/Install-Ruby.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-PyPy.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-Toolset.ps1",
-                "{{ template_dir }}/scripts/Installers/Configure-Toolset.ps1",
                 "{{ template_dir }}/scripts/Installers/Update-AndroidSDK.ps1",
                 "{{ template_dir }}/scripts/Installers/Install-AzureModules.ps1",
                 "{{ template_dir }}/scripts/Installers/Install-Pipx.ps1",
