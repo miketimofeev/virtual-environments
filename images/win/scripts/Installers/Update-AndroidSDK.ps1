@@ -22,7 +22,7 @@ for($i=0; $i -lt 100; $i++)
 # Accept all the licenses
 $response | & $sdkManager --licenses
 
-Write-Output "y`n" | & $sdkManager --sdk_root=$sdkRoot "platform-tools"
+& $sdkManager --sdk_root=$sdkRoot "platform-tools"
 
 # get packages info
 $androidPackages = Get-AndroidPackages -AndroidSDKManagerPath $sdkManager
