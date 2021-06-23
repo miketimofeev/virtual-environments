@@ -16,7 +16,7 @@ function Get-AndroidSDKRoot {
 }
 
 function Get-AndroidSDKManagerPath {
-    return Join-Path $env:ANDROID_HOME "tools\bin\sdkmanager.bat"
+    return Join-Path $env:ANDROID_HOME "cmdline-tools\latest\bin\sdkmanager.bat"
 }
 
 function Get-AndroidInstalledPackages {
