@@ -14,15 +14,7 @@ New-Item -Path "$sdkRoot" -ItemType SymbolicLink -Value "$sdkInstallRoot"
 $androidToolset = (Get-ToolsetContent).android
 $sdkManager = "$sdkRoot\cmdline-tools\latest\bin\sdkmanager.bat"
 
-for($i=0; $i -lt 100; $i++)
-{
-    $response += "y`r`n"
-}
-
-# Accept all the licenses
-$response | & $sdkManager --licenses
-
-& $sdkManager --sdk_root=$sdkRoot "platform-tools"
+Write-Output "y" | & $sdkManager --sdk_root=$sdkRoot "platform-tools"
 
 # get packages info
 $androidPackages = Get-AndroidPackages -AndroidSDKManagerPath $sdkManager
