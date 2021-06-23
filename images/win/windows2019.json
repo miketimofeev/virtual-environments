@@ -182,21 +182,13 @@
         },
         {
             "type": "powershell",
-            "inline": [
-                "pwsh -File '{{user `image_folder`}}\\Installers\\Update-AndroidSDK.ps1'"
-            ],
-            "environment_vars": [
-                "TOOLSET_JSON_PATH={{user `toolset_json_path`}}"
-            ]
-        },
-        {
-            "type": "powershell",
             "environment_vars": [
                 "TOOLSET_JSON_PATH={{user `toolset_json_path`}}",
                 "ROOT_FOLDER={{user `root_folder`}}",
                 "PSMODULES_ROOT_FOLDER={{user `psmodules_root_folder`}}"
             ],
             "scripts": [
+                "{{ template_dir }}/scripts/Installers/Update-AndroidSDK.ps1",
                 "{{ template_dir }}/scripts/Installers/Install-AzureModules.ps1",
                 "{{ template_dir }}/scripts/Installers/Install-Pipx.ps1",
                 "{{ template_dir }}/scripts/Installers/Install-PipxPackages.ps1"
