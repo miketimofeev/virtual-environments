@@ -50,6 +50,22 @@ Describe "Android" {
         }
     }
 
+    Context "SDKManagers" {
+        $testCases = @(
+            @{
+                PackageName = "SDK tools"
+                Sdkmanager = "$ANDROID_SDK_DIR/tools/bin/sdkmanager"
+            },
+            @{
+                PackageName = "Command-line tools"
+                Sdkmanager = "$ANDROID_SDK_DIR/cmdline-tools/latest/bin/sdkmanager"
+            }
+        )
+
+        It "Sdkmanager from <PackageName> is available" -TestCases $testCases {
+            "$Sdkmanager --version" | Should -ReturnZeroExitCode
+        }
+
     Context "Packages" {
         $testCases = $androidPackages | ForEach-Object { @{ PackageName = $_ } }
 
