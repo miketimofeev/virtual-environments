@@ -65,6 +65,7 @@ Describe "Android" {
         It "Sdkmanager from <PackageName> is available" -TestCases $testCases {
             "$Sdkmanager --version" | Should -ReturnZeroExitCode
         }
+    }
 
     Context "Packages" {
         $testCases = $androidPackages | ForEach-Object { @{ PackageName = $_ } }
