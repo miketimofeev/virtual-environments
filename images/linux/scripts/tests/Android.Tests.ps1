@@ -51,16 +51,14 @@ Describe "Android" {
     }
 
     Context "SDKManagers" {
-        $toolsSdkman = Join-Path $ANDROID_SDK_DIR "/tools" "bin" "sdkmanager"
-        $cmdlineSdkman = Join-Path $ANDROID_SDK_DIR "/cmdline-tools" "latest" "bin" "sdkmanager"
         $testCases = @(
             @{
                 PackageName = "SDK tools"
-                Sdkmanager = $toolsSdkman
+                Sdkmanager = "/usr/local/lib/android/sdk/tools/bin/sdkmanager"
             },
             @{
                 PackageName = "Command-line tools"
-                Sdkmanager = $cmdlineSdkman
+                Sdkmanager = "/usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager"
             }
         )
 
