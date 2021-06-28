@@ -144,9 +144,8 @@ $toolsList = @(
 
 if (-not (Test-IsUbuntu16)) {
     $toolsList += @(
-        (Get-BicepVersion),
-        (Get-BuildahVersion),
         (Get-PodManVersion),
+        (Get-BuildahVersion),
         (Get-SkopeoVersion),
         (Get-YamllintVersion)
     )
@@ -186,9 +185,7 @@ if (Test-IsUbuntu20) {
     $markdown += New-MDNewLine
 }
 
-if (-not (Test-IsUbuntu16)) {
-    $markdown += Build-PHPSection
-}
+$markdown += Build-PHPSection
 
 $markdown += New-MDHeader "Haskell" -Level 3
 $markdown += New-MDList -Style Unordered -Lines (@(

@@ -60,13 +60,16 @@ function Install-JavaFromAdoptOpenJDK {
         -and $_.binary.architecture -eq $Architecture `
         -and $_.binary.image_type -eq "jdk"
     }
-
-    # Download and extract java binaries to temporary folder
     $downloadUrl = $asset.binary.package.link
-    $archivePath = Start-DownloadWithRetry -Url $downloadUrl -Name $([IO.Path]::GetFileName($downloadUrl))
-
     # We have to replace '+' sign in the version to '-' due to the issue with incorrect path in Android builds https://github.com/actions/virtual-environments/issues/3014
     $fullJavaVersion = $asset.version.semver -replace '\+', '-'
+
+    # Download and extract java binaries to temporary folder
+    $archivePath = Start-DownloadWithRetry -Url $downloadUrl -Name $([IO.Path]::GetFileName($downloadUrl))
+    $javaTempPath = Join-Path -Path $env:TEMP -ChildPath "Java_$fullJavaVersion"
+    Extract-7Zip -Path $archivePath -DestinationPath $javaTempPath
+    $javaTempBinariesPath = Join-Path -Path $javaTempPath -ChildPath "\jdk*\"
+
     # Create directories in toolcache path
     $javaToolcachePath = Join-Path -Path $env:AGENT_TOOLSDIRECTORY -ChildPath "Java_Adopt_jdk"
     $javaVersionPath = Join-Path -Path $javaToolcachePath -ChildPath $fullJavaVersion
@@ -81,9 +84,8 @@ function Install-JavaFromAdoptOpenJDK {
     Write-Host "Creating Java '${fullJavaVersion}' folder in '${javaVersionPath}'"
     New-Item -ItemType Directory -Path $javaVersionPath -Force | Out-Null
 
-    # Complete the installation by extarcting Java binaries to toolcache and creating the complete file
-    Extract-7Zip -Path $archivePath -DestinationPath $javaVersionPath
-    Get-ChildItem -Path $javaVersionPath | Rename-Item -NewName $javaArchPath
+    # Complete the installation by moving Java binaries from temporary directory to toolcache and creating the complete file
+    Move-Item -Path $javaTempBinariesPath -Destination $javaArchPath 
     New-Item -ItemType File -Path $javaVersionPath -Name "$Architecture.complete" | Out-Null
 }
 

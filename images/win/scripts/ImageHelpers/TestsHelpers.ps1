@@ -58,10 +58,10 @@ function Invoke-PesterTests {
     Update-Environment
 
     # Switch ErrorActionPreference to Stop temporary to make sure that tests will on silent errors too
-    $backupErrorActionPreference = $ErrorActionPreference
-    $ErrorActionPreference = "Stop"
+    #$backupErrorActionPreference = $ErrorActionPreference
+    #$ErrorActionPreference = "Stop"
     $results = Invoke-Pester -Configuration $configuration
-    $ErrorActionPreference = $backupErrorActionPreference
+    #$ErrorActionPreference = $backupErrorActionPreference
 
     # Fail in case if no tests are run
     if (-not ($results -and ($results.FailedCount -eq 0) -and ($results.PassedCount -gt 0))) {

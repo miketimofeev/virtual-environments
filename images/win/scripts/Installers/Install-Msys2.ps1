@@ -88,7 +88,12 @@ foreach ($arch in $archs)
   pacman.exe -Q | grep ^${arch}-
 }
 
-$env:PATH = $origPath
 Write-Host "`nMSYS2 installation completed"
+
+Get-Command "bash"
+bash --version
+
+
+$env:PATH = $origPath
 
 Invoke-PesterTests -TestFile "MSYS2"

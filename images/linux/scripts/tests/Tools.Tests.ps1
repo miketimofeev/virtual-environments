@@ -8,12 +8,6 @@ Describe "azcopy" {
     }
 }
 
-Describe "Bicep" -Skip:(Test-IsUbuntu16) {
-    It "Bicep" {
-        "bicep --version" | Should -ReturnZeroExitCode
-    }
-}
-
 Describe "Rust" {
     It "Rustup is installed" {
         "rustup --version" | Should -ReturnZeroExitCode

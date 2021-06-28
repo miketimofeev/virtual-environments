@@ -3,6 +3,10 @@
 ##  Desc:  Run a full antivirus scan.
 ##         Run right after cleanup before we sysprep
 ################################################################################
+Write-Host "Path after tests in the next script is"
+$env:PATH
+Get-Command "bash"
+bash --version
 
 if ($env:run_scan_antivirus -eq $true) {
     try {
