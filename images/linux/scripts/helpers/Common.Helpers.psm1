@@ -61,6 +61,12 @@ function Get-AndroidPackages {
     return $androidPackages
 }
 
+function Get-InstalledAndroidPackages {
+    $androidSDKManagerPath = "/usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager"
+    $androidPackages = & $androidSDKManagerPath --list_installed
+    return $androidPackages
+}
+
 function Get-EnvironmentVariable($variable) {
     return [System.Environment]::GetEnvironmentVariable($variable)
 }
