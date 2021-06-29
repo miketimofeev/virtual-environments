@@ -35,6 +35,7 @@ Expand-Archive "$sdkInstallRoot\android-sdk-licenses.zip" $sdkInstallRoot
 
 # install platform-tools
 $platformToolsPath = Join-Path -Path $sdkInstallRoot -ChildPath "platform-tools"
+# Remove outdated platform-tools that was brought by Visual Studio Android package
 if (Test-Path $platformToolsPath)
 {
     Write-Host "Removing previous platform-tools installation from Visual Studio component"
