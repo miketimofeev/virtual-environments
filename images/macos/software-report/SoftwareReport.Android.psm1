@@ -18,16 +18,8 @@ function Get-AndroidSDKManagerPath {
 
 function Get-AndroidInstalledPackages {
     $androidSDKManagerPath = Get-AndroidSDKManagerPath
-    $androidSDKManagerList = Invoke-Expression "$androidSDKManagerPath --list --include_obsolete"
-    $androidInstalledPackages = @()
-    foreach($packageInfo in $androidSDKManagerList) {
-        if($packageInfo -Match "Available Packages:") {
-            break
-        }
-
-        $androidInstalledPackages += $packageInfo
-    }
-    return $androidInstalledPackages
+    $androidSDKManagerList = Invoke-Expression "$androidSDKManagerPath --list_installed --include_obsolete"
+    return $androidSDKManagerList
 }
 
 function Get-AndroidPackages {

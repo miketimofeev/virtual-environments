@@ -21,24 +21,17 @@ function Get-AndroidSDKManagerPath {
 
 function Get-AndroidInstalledPackages {
     $androidSDKManagerPath = Get-AndroidSDKManagerPath
-    $androidSDKManagerList = & $androidSDKManagerPath --list --include_obsolete
-    $androidInstalledPackages = @()
-    foreach($packageInfo in $androidSDKManagerList) {
-        if($packageInfo -Match "Available Packages:") {
-            break
-        }
-
-        $androidInstalledPackages += $packageInfo
-    }
-    return $androidInstalledPackages
+    $androidSDKManagerList = & $androidSDKManagerPath --list_installed --include_obsolete
+    return $androidSDKManagerList
 }
 
 function Build-AndroidTable {
     $packageInfo = Get-AndroidInstalledPackages
+    $commandLineTools = Get-AndroidSDKManagerPath
     return @(
         @{
             "Package" = "Android Command Line Tools"
-            "Version" = Get-AndroidPackageVersions -PackageInfo $packageInfo -MatchedString "Android SDK Command-line Tools"
+            "Version" = (& $commandLineTools --version 2>$null | Out-String).Trim()
         },
         @{
             "Package" = "Android Emulator"
