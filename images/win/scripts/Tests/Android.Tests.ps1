@@ -64,7 +64,7 @@ Describe "Android SDK" {
         )
 
         It "Sdkmanager from <PackageName> is available" -TestCases $testCases {
-            "$Sdkmanager --version" | Should -ReturnZeroExitCode
+            "$Sdkmanager --list" | Should -ReturnZeroExitCode
         }
     }
 
