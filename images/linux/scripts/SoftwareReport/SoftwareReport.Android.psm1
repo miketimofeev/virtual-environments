@@ -23,11 +23,10 @@ function Get-AndroidInstalledPackages {
 
 function Build-AndroidTable {
     $packageInfo = Get-AndroidInstalledPackages
-    $commandLineTools = Get-AndroidSDKManagerPath
     return @(
         @{
             "Package" = "Android Command Line Tools"
-            "Version" = (& $commandLineTools --version 2>$null | Out-String).Trim()
+            "Version" = Get-AndroidCommandLineToolsVersion
         },
         @{
             "Package" = "Android Emulator"
@@ -114,6 +113,13 @@ function Get-AndroidPlatformVersions {
     }
     [array]::Reverse($versions)
     return ($versions -Join "<br>")
+}
+
+function Get-AndroidCommandLineToolsVersion {
+    $commandLineTools = Get-AndroidSDKManagerPath
+    (& $commandLineTools --version | Out-String).Trim() -match "^\d+\.{1,}\d+$" | Out-Null
+    $commandLineToolsVersion = $Matches.Values
+    return $commandLineToolsVersion
 }
 
 function Get-AndroidBuildToolVersions {
