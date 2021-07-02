@@ -70,3 +70,7 @@ function Get-InstalledAndroidPackages {
 function Get-EnvironmentVariable($variable) {
     return [System.Environment]::GetEnvironmentVariable($variable)
 }
+
+function Get-EtcEnvironmentVariable($variable) {
+    ((Get-Content /etc/environment) -match $variable).replace("${variable}=","")  
+}
