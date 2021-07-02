@@ -107,4 +107,5 @@ fi
 # Add required permissions
 chmod -R a+rwx ${ANDROID_SDK_ROOT}
 
+reloadEtcEnvironment
 invoke_tests "Android"

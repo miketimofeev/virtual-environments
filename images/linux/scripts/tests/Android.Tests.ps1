@@ -51,16 +51,20 @@ Describe "Android" {
     }
 
     Context "SDKManagers" {
-        $ANDROID_HOME = Get-EtcEnvironmentVariable "ANDROID_HOME"
-        Write-Host "android home is $ANDROID_HOME"
+        $envs = gci Env:
+        foreach ($env in $envs)
+        {
+            Write-Host "$($env.name) - $($env.value)"
+        }
+        Write-Host "android home is $env:ANDROID_HOME"
         $testCases = @(
             @{
                 PackageName = "SDK tools"
-                Sdkmanager = "$ANDROID_HOME/tools/bin/sdkmanager"
+                Sdkmanager = "$env:ANDROID_HOME/tools/bin/sdkmanager"
             },
             @{
                 PackageName = "Command-line tools"
-                Sdkmanager = "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+                Sdkmanager = "$env:ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
             }
         )
 
