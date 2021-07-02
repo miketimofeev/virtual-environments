@@ -51,6 +51,7 @@ Describe "Android" {
     }
 
     Context "SDKManagers" {
+        Write-Host "android home is $env:ANDROID_HOME"
         $testCases = @(
             @{
                 PackageName = "SDK tools"
