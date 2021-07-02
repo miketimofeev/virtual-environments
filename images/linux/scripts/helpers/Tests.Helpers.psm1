@@ -5,6 +5,23 @@ function Validate-ToolExist($tool) {
     Get-Command $tool -ErrorAction SilentlyContinue | Should -BeTrue
 }
 
+# Gets value of environment variable by the name
+function Get-EnvironmentVariable($variable) {
+    return [System.Environment]::GetEnvironmentVariable($variable, "Machine")
+}
+
+# Update environment variables without reboot
+function Update-Environment {
+    $variables = [Environment]::GetEnvironmentVariables("Machine")
+    $variables.Keys | ForEach-Object {
+        $key = $_
+        $value = $variables[$key]
+        Set-Item -Path "env:$key" -Value $value
+    }
+    # We need to refresh PATH the latest one because it could include other variables "%M2_HOME%/bin"
+    $env:PATH = [Environment]::GetEnvironmentVariable("PATH", "Machine")
+}
+
 function Invoke-PesterTests {
     Param(
         [Parameter(Mandatory)][string] $TestFile,
@@ -28,6 +45,9 @@ function Invoke-PesterTests {
     if ($TestName) {
         $configuration.Filter.FullName = $TestName
     }
+
+    # Update environment variables without reboot
+    Update-Environment
 
     # Switch ErrorActionPreference to Stop temporary to make sure that tests will fail on silent errors too
     $backupErrorActionPreference = $ErrorActionPreference
