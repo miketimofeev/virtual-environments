@@ -54,11 +54,11 @@ Describe "Android" {
         $testCases = @(
             @{
                 PackageName = "SDK tools"
-                Sdkmanager = "/usr/local/lib/android/sdk/tools/bin/sdkmanager"
+                Sdkmanager = "$env:ANDROID_HOME/tools/bin/sdkmanager"
             },
             @{
                 PackageName = "Command-line tools"
-                Sdkmanager = "/usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager"
+                Sdkmanager = "$env:ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
             }
         )
 
