@@ -72,5 +72,6 @@ function Get-EnvironmentVariable($variable) {
 }
 
 function Get-EtcEnvironmentVariable($variable) {
-    ((Get-Content /etc/environment) -match $variable).replace("${variable}=","")  
+    $variableWithEq = $variable + "="
+    ((Get-Content /etc/environment) -match $variableWithEq).replace($variableWithEq,"")  
 }
