@@ -32,8 +32,6 @@ Describe "Android" {
     $androidPackages = $androidPackages | ForEach-Object { $_ }
 
     BeforeAll {
-        $ANDROID_SDK_DIR = "/usr/local/lib/android/sdk"
-
         function Validate-AndroidPackage {
             param (
                 [Parameter(Mandatory=$true)]
@@ -45,18 +43,12 @@ Describe "Android" {
             #         'cmake;3.6.4111459' -> 'cmake/3.6.4111459'
             #         'patcher;v4' -> 'patcher/v4'
             $PackageName = $PackageName.Replace(";", "/")
-            $targetPath = Join-Path $ANDROID_SDK_DIR $PackageName
+            $targetPath = Join-Path $env:ANDROID_HOME $PackageName
             $targetPath | Should -Exist
         }
     }
 
     Context "SDKManagers" {
-        $envs = gci Env:
-        foreach ($env in $envs)
-        {
-            Write-Host "$($env.name) - $($env.value)"
-        }
-        Write-Host "android home is $env:ANDROID_HOME"
         $testCases = @(
             @{
                 PackageName = "SDK tools"
