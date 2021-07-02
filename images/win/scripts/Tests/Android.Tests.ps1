@@ -55,11 +55,11 @@ Describe "Android SDK" {
         $testCases = @(
             @{
                 PackageName = "SDK tools"
-                Sdkmanager = "C:\Android\android-sdk\tools\bin\sdkmanager.bat"
+                Sdkmanager = "$env:ANDROID_HOME\tools\bin\sdkmanager.bat"
             },
             @{
                 PackageName = "Command-line tools"
-                Sdkmanager = "C:\Android\android-sdk\cmdline-tools\latest\bin\sdkmanager.bat"
+                Sdkmanager = "$env:ANDROID_HOME\cmdline-tools\latest\bin\sdkmanager.bat"
             }
         )
 
