@@ -51,6 +51,11 @@ Describe "Android" {
     }
 
     Context "SDKManagers" {
+        $envs = gci Env:
+        foreach ($env in $envs)
+        {
+            Write-Host "$($env.name) - $($env.value)"
+        }
         Write-Host "android home is $env:ANDROID_HOME"
         $testCases = @(
             @{
