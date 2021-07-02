@@ -51,7 +51,7 @@ Describe "Android" {
     }
 
     Context "SDKManagers" {
-        $ANDROID_HOME = getEtcEnvironmentVariable "ANDROID_HOME"
+        $ANDROID_HOME = Get-EnvironmentVariable "ANDROID_HOME"
         Write-Host "android home is $ANDROID_HOME"
         $testCases = @(
             @{
