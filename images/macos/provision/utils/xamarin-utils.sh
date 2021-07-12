@@ -23,6 +23,18 @@ buildMonoDownloadUrl() {
     "6.12.0.125")
       echo "https://download.visualstudio.microsoft.com/download/pr/2516b6e5-6965-4f5b-af68-d1959a446e7a/443346a56436b5e2682b7c5b5b25e990/monoframework-mdk-6.12.0.125.macos10.xamarin.universal.pkg"
       ;;
+    "6.10.0.106")
+      echo "https://download.visualstudio.microsoft.com/download/pr/c18ac127-f82f-4d9d-ab1f-2b730362dfaa/0ece4868d10aa6cb73e7ec537210c594/monoframework-mdk-6.10.0.106.macos10.xamarin.universal.pkg"
+      ;;
+    "6.8.0.123")
+      echo "https://download.visualstudio.microsoft.com/download/pr/8f94ca38-039a-4c9f-a51a-a6cb33c76a8c/3a376d8c817ec4d720ecca2d95ceb4c1/monoframework-mdk-6.8.0.123.macos10.xamarin.universal.pkg"
+      ;;
+    "6.6.0.166")
+      echo "https://download.visualstudio.microsoft.com/download/pr/16ae715b-ae37-47be-a5dc-c7abd236fbef/a11818821990414b142d5b30b23bb232/monoframework-mdk-6.6.0.166.macos10.xamarin.universal.pkg"
+      ;;
+    "6.4.0.208")
+      echo "https://download.visualstudio.microsoft.com/download/pr/5b7dcb51-3035-46f7-a8cb-efe3a1da351c/dcba976cd3257636b6b2828575d29d3c/monoframework-mdk-6.4.0.208.macos10.xamarin.universal.pkg"
+      ;;
   esac
 }
 
@@ -58,6 +70,30 @@ buildXamariniIOSDownloadUrl() {
       "13.20.2.2")
         echo "https://download.visualstudio.microsoft.com/download/pr/b089be2f-932a-40ab-904b-b626f9e6427b/186357848bab70642927eaf17410a051/xamarin.ios-13.20.2.2.pkg"
         ;;
+      "13.18.2.1")
+        echo "https://download.visualstudio.microsoft.com/download/pr/68ffa29a-6a5b-41f7-af7b-506ddcf4bbfc/35159cac3be1910e87309c0094a8ec8a/xamarin.ios-13.18.2.1.pkg"
+        ;;
+      "13.16.0.13")
+        echo "https://download.visualstudio.microsoft.com/download/pr/fb168f8a-b44e-4582-8147-eefdf1562110/0a25988a5b9f502f4facd875c1b2072b/xamarin.ios-13.16.0.13.pkg"
+        ;;
+      "13.14.1.39")
+        echo "https://download.visualstudio.microsoft.com/download/pr/8f94ca38-039a-4c9f-a51a-a6cb33c76a8c/21e09d8084eb7c15eaa07c970e0eccdc/xamarin.ios-13.14.1.39.pkg"
+        ;;
+      "13.10.0.21")
+        echo "https://download.visualstudio.microsoft.com/download/pr/16ae715b-ae37-47be-a5dc-c7abd236fbef/185ba3460c06e3fa2e7aa4609e63d57a/xamarin.ios-13.10.0.21.pkg"
+        ;;
+      "13.8.3.0")
+        echo "https://download.visualstudio.microsoft.com/download/pr/d468bb4d-8a1d-4993-9087-3d44e54b3cc1/d0adf404348a0ff0f789e9657754dfb6/xamarin.ios-13.8.3.0.pkg"
+        ;;
+      "13.6.0.12")
+        echo "https://download.visualstudio.microsoft.com/download/pr/ae8e9044-57e0-4500-bc58-6fe41d5f711d/71a1316dcca8c4cbcfb070aff9f738d2/xamarin.ios-13.6.0.12.pkg"
+        ;;
+      "13.4.0.2")
+        echo "https://download.visualstudio.microsoft.com/download/pr/d11a42ff-dd11-4005-b5a8-799856a96aad/2893a2da0df8a2e2d45ea17e2be2ccce/xamarin.ios-13.4.0.2.pkg"
+        ;;
+      "13.2.0.47")
+        echo "https://download.visualstudio.microsoft.com/download/pr/b88b1836-713c-4fa6-ad9e-eb399bcb5ff7/93667155440140a73c702aed97746c58/xamarin.ios-13.2.0.47.pkg"
+        ;;
   esac
 }
 
@@ -87,6 +123,30 @@ buildXamarinMacDownloadUrl() {
       "6.20.2.2")
         echo "https://download.visualstudio.microsoft.com/download/pr/b089be2f-932a-40ab-904b-b626f9e6427b/6aad9f3ea4fbfb92ce267e0f60b34797/xamarin.mac-6.20.2.2.pkg"
         ;;
+      "6.18.3.2")
+        echo "https://download.visualstudio.microsoft.com/download/pr/f42979a0-52fb-454d-bc96-0916cf4450f9/40dd78214c7790f18517b19d914d0bee/xamarin.mac-6.18.3.2.pkg"
+        ;;
+      "6.16.0.13")
+        echo "https://download.visualstudio.microsoft.com/download/pr/fb168f8a-b44e-4582-8147-eefdf1562110/30f09915995da752f30f432760e4ddbe/xamarin.mac-6.16.0.13.pkg"
+        ;;
+      "6.14.1.39")
+        echo "https://download.visualstudio.microsoft.com/download/pr/8f94ca38-039a-4c9f-a51a-a6cb33c76a8c/979144aead55378df75482d35957cdc9/xamarin.mac-6.14.1.39.pkg"
+        ;;
+      "6.10.0.21")
+        echo "https://download.visualstudio.microsoft.com/download/pr/16ae715b-ae37-47be-a5dc-c7abd236fbef/90d9e8f056c51a45d9e649ec81b38126/xamarin.mac-6.10.0.21.pkg"
+        ;;
+      "6.8.3.0")
+        echo "https://download.visualstudio.microsoft.com/download/pr/3f968dbb-f1e3-4dbf-9e2f-b7337a99f3a2/b732451c7088213b2bfe7151f753ffac/xamarin.mac-6.8.3.0.pkg"
+        ;;
+      "6.6.0.12")
+        echo "https://download.visualstudio.microsoft.com/download/pr/c66cc733-8129-4551-8f59-4483f636931b/52194acdeb070158d49fe14cd1453062/xamarin.mac-6.6.0.12.pkg"
+        ;;
+      "6.4.0.2")
+        echo "https://download.visualstudio.microsoft.com/download/pr/6a9f2134-313e-4d48-ac3e-4b14ecb3e311/4dd2ac187f85b54c672bb55304003b43/xamarin.mac-6.4.0.2.pkg"
+        ;;
+      "6.2.0.47")
+        echo "https://download.visualstudio.microsoft.com/download/pr/336d5c3a-3c2f-4b7d-bfad-747e5e685f58/f812b77be77cb9acc728e97e49dce1dd/xamarin.mac-6.2.0.47.pkg"
+        ;;
   esac
 }
 
@@ -103,6 +163,18 @@ buildXamarinAndroidDownloadUrl() {
         ;;
       "11.0.2.0")
         echo "https://download.visualstudio.microsoft.com/download/pr/ea697e1c-ccb6-45cb-8425-952fb876d967/a2d2c3476403c2c238a77914cd8e8f7b/xamarin.android-11.0.2.0.pkg"
+        ;;
+      "10.3.1.4")
+        echo "https://download.visualstudio.microsoft.com/download/pr/68ffa29a-6a5b-41f7-af7b-506ddcf4bbfc/4f246332a0ae3a6dede762eefe988ccd/xamarin.android-10.3.1.4.pkg"
+        ;;
+      "10.2.0.100")
+        echo "https://download.visualstudio.microsoft.com/download/pr/8f94ca38-039a-4c9f-a51a-a6cb33c76a8c/aa46188c5f7a2e0c6f2d4bd4dc261604/xamarin.android-10.2.0.100.pkg"
+        ;;
+      "10.1.3.7")
+        echo "https://download.visualstudio.microsoft.com/download/pr/9d3de04b-f20a-42fd-8b9f-9e9132950e43/dced36a66d3dc0a834596b5845f45909/xamarin.android-10.1.3.7.pkg"
+        ;;
+      "10.0.6.2")
+        echo "https://download.visualstudio.microsoft.com/download/pr/1e90a742-fe8b-4e8c-8e4b-a5045d6105eb/385189201cb606b9c44957d67f1ce55c/xamarin.android-10.0.6.2.pkg"
         ;;
   esac
 }
