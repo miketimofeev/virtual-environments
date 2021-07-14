@@ -24,7 +24,7 @@ download_with_retries() {
     while [ $i -gt 0 ]; do
         ((i--))
         echo "Verifying HTTP response code for '$URL'..."
-        http_code=$(curl -sL -o out.html -w '%{http_code}' $URL)
+        http_code=$(curl -sL -o /dev/null -w '%{http_code}' $URL)
         if [ $http_code == 200 ]; then
             echo "Received successful response code, starting the download..."
             eval $COMMAND
