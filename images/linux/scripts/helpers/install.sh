@@ -23,12 +23,16 @@ download_with_retries() {
     i=20
     while [ $i -gt 0 ]; do
         ((i--))
-        eval $COMMAND
-        if [ $? != 0 ]; then
-            sleep 30
-        else
+        echo "Verifying HTTP response code for '$URL'..."
+        http_code=$(curl -sL -o out.html -w '%{http_code}' $URL)
+        if [ $http_code == 200 ]; then
+            echo "Received successful response code, starting the download..."
+            eval $COMMAND
             echo "Download completed"
             return 0
+        else
+            echo "Error — HTTP response code for '$URL' is '$http_code'. Waiting 30 seconds before the next attempt"
+            sleep 30
         fi
     done
 
