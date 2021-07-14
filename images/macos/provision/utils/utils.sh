@@ -15,18 +15,21 @@ download_with_retries() {
         COMMAND="curl $URL -4 -sL -o '$DEST/$NAME'"
     fi
 
-    echo "Downloading $URL..."
+    echo "Downloading '$URL' to '${DEST}/${NAME}'..."
     retries=20
     interval=30
     while [ $retries -gt 0 ]; do
         ((retries--))
-        eval $COMMAND
-        if [ $? != 0 ]; then
-            echo "Unable to download $URL, next attempt in $interval sec, $retries attempts left"
-            sleep $interval
-        else
-            echo "$URL was downloaded successfully to $DEST/$NAME"
+        echo "Verifying HTTP response code for '$URL'..."
+        http_code=$(curl -sL -o out.html -w '%{http_code}' $URL)
+        if [ $http_code == 200 ]; then
+            echo "Received successful response code, starting the download..."
+            eval $COMMAND
+            echo "Download completed"
             return 0
+        else
+            echo "Error — HTTP response code for '$URL' is '$http_code'. Waiting $interval seconds before the next attempt"
+            sleep 30
         fi
     done
 
