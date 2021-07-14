@@ -10,9 +10,9 @@ download_with_retries() {
     local COMPRESSED="$4"
 
     if [[ $COMPRESSED == "compressed" ]]; then
-        COMMAND="curl $URL -4 -sL --compressed -o '$DEST/$NAME' -w '%{http_code}'"
+        local COMMAND="curl $URL -4 -sL --compressed -o '$DEST/$NAME' -w '%{http_code}'"
     else
-        COMMAND="curl $URL -4 -sL -o '$DEST/$NAME' -w '%{http_code}'"
+        local COMMAND="curl $URL -4 -sL -o '$DEST/$NAME' -w '%{http_code}'"
     fi
 
     echo "Downloading '$URL' to '${DEST}/${NAME}'..."

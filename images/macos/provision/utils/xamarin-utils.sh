@@ -7,11 +7,26 @@ source ~/utils/utils.sh
 downloadAndInstallPKG() {
   local PKG_URL=$1
   local PKG_NAME=${PKG_URL##*/}
+  local COMMAND="sudo installer -pkg "$TMPMOUNT/$PKG_NAME" -target /"
 
-  download_with_retries $PKG_URL
+  echo "Trying to download and install $PKG_NAME..."
+  retries=20
+  interval=30
+  while [ $retries -gt 0 ]; do
+    download_with_retries $PKG_URL
+    echo "Installing $PKG_NAME..."
+    eval $COMMAND
+    if [ $? != 0 ]; then
+      echo "Error — $PKG_NAME was not installed. Waiting $interval seconds before the next attempt, $retries attempts left"
+      sleep 30
+    else
+      echo "$PKG_NAME installed successfully"
+      return 0
+    fi
+  done
 
-  echo "Installing $PKG_NAME..."
-  sudo installer -pkg "$TMPMOUNT/$PKG_NAME" -target /
+  echo "Could not install $PKG_NAME"
+  return 1
 }
 
 buildVSMacDownloadUrl() {
